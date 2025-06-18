@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CARE BEAUTY - 訪問美容サービス</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #807A66;  /* メインカラー */
+            --secondary-color: #B8A582; /* セカンダリーカラー */
+            --accent-color: #FFD700;    /* アクセントカラー */
+            --background-gradient: linear-gradient(135deg, #F5F0E8 0%, #E8DCC0 50%, #D4C4A0 100%);
+            --card-background: rgba(255, 255, 255, 0.95);
+            --card-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: var(--background-gradient);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 0;
+            position: relative;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease-out;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+            z-index: -1;
+            background: rgba(0,0,0,0.2);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            color: white;
+        }
+
+        .hero h1 {
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+
+        .logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            font-weight: bold;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #807A66;
+            margin-bottom: 15px;
+        }
+
+        .sparkle {
+            display: inline-block;
+            animation: sparkle 2s infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.2) rotate(180deg); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .services-section {
+            background: var(--card-background);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: var(--card-shadow);
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #807A66;
+            font-weight: bold;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            border-radius: 15px;
+            padding: 25px;
+            color: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-image {
+            width: 100%;
+            height: 200px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            transition: transform 0.6s;
+        }
+
+        .service-card:hover::before {
+            transform: rotate(45deg) translate(50%, 50%);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .service-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .service-description {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+
+        .service-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: right;
+        }
+
+        .sets-section {
+            background: linear-gradient(135deg, #E8DCC0 0%, #F5F0E8 100%);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .set-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .set-card:hover {
+            transform: scale(1.02);
+        }
+
+        .set-title {
+            font-size: 1.4rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .set-price {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 1.2rem;
+        }
+
+        .discounted-price {
+            color: #e74c3c;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .campaign-section {
+            background: linear-gradient(135deg, #F5F0E8 0%, #E8DCC0 50%, #D4C4A0 100%);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease-out 0.6s both;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid #807A66;
+        }
+
+        .campaign-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="20">✨</text></svg>') repeat;
+            opacity: 0.1;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .campaign-title {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .campaign-highlight {
+            font-size: 2.5rem;
+            color: #e74c3c;
+            font-weight: bold;
+            margin: 20px 0;
+            animation: pulse 2s infinite;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .area-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            animation: fadeInUp 1s ease-out 0.8s both;
+        }
+
+        .contact-btn {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: rgba(218, 165, 32, 0.6);
+            animation: floatUp 6s infinite linear;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+<body>
+    <div class="floating-hearts" id="hearts"></div>
+    
+    <div class="container">
+        <div class="hero">
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="videos/hero-bg.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="hero-content">
+                <div class="logo">
+                    <img src="images/logo.png" alt="CARE BEAUTY ロゴ" class="logo-img">
+                </div>
+                <h1><span class="sparkle">✨</span> CARE BEAUTY <span class="sparkle">✨</span></h1>
+                <p>美しさを、生きる力に</p>
+                <p>あなたのもとへ美しさをお届けする訪問美容サービス</p>
+            </div>
+        </div>
+
+        <div class="services-section">
+            <h2 class="section-title"><span class="sparkle">✨</span>訪問美容メニュー<span class="sparkle">✨</span></h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="images/service-massage.jpg" alt="ヘッドマッサージ">
+                    </div>
+                    <div class="service-name">ヘッドマッサージ</div>
+                    <div class="service-description">リラックス効果抜群</div>
+                    <div class="service-price">¥3,000</div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="images/service-facial.jpg" alt="フェイシャルエステ">
+                    </div>
+                    <div class="service-name">フェイシャルエステ</div>
+                    <div class="service-description">パック付き</div>
+                    <div class="service-price">¥7,000</div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="images/service-drainage.jpg" alt="リンパドレナージュ">
+                    </div>
+                    <div class="service-name">リンパドレナージュ</div>
+                    <div class="service-description">肩～指先・太もも～足先</div>
+                    <div class="service-price">¥7,000</div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-name">フェイシャルエステ</div>
+                    <div class="service-description">パック付き</div>
+                    <div class="service-price">¥7,000</div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-name">リンパドレナージュ</div>
+                    <div class="service-description">肩～指先・太もも～足先</div>
+                    <div class="service-price">¥7,000</div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-name">ハンドネイル</div>
+                    <div class="service-description">爪切り＋ハンドケア付き</div>
+                    <div class="service-price">¥5,000</div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-name">フットネイル</div>
+                    <div class="service-description">爪切り＋フットバス＋フットケア付き<br>※巻き爪ケア +¥1,000</div>
+                    <div class="service-price">¥7,000</div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-name">フルメイク</div>
+                    <div class="service-description">記念写真付き</div>
+                    <div class="service-price">¥8,000</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sets-section">
+            <h2 class="section-title">💎お得なセットメニュー💎</h2>
+            
+            <div class="set-card">
+                <div class="set-title">フェイシャルエステ＋ヘッドマッサージ</div>
+                <div class="set-price">
+                    <span class="original-price">¥10,000</span>
+                    <span>→</span>
+                    <span class="discounted-price">¥8,500</span>
+                </div>
+            </div>
+            
+            <div class="set-card">
+                <div class="set-title">フェイシャルエステ＋リンパドレナージュ</div>
+                <div class="set-price">
+                    <span class="original-price">¥14,000</span>
+                    <span>→</span>
+                    <span class="discounted-price">¥12,500</span>
+                </div>
+            </div>
+            
+            <div class="set-card">
+                <div class="set-title">フェイシャルエステ＋フルメイク</div>
+                <div class="set-price">
+                    <span class="original-price">¥15,000</span>
+                    <span>→</span>
+                    <span class="discounted-price">¥13,500</span>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <p style="font-size: 1.2rem; color: #333;">その他、お客様のご要望に応じて</p>
+                <p style="font-size: 1.4rem; font-weight: bold; color: #e74c3c; margin-top: 10px;">
+                    <strong>"あなただけの特別セット"</strong>もご提案いたします！
+                </p>
+            </div>
+        </div>
+
+        <div class="campaign-section">
+            <h2 class="campaign-title">🎉初回限定キャンペーン🎉</h2>
+            <div class="campaign-highlight">💖 すべてのメニューが半額！！ 💖</div>
+            <p style="font-size: 1.2rem; color: #333; position: relative; z-index: 1;">
+                はじめての方はぜひこの機会にご体験ください！
+            </p>
+        </div>
+
+        <div class="area-section">
+            <h2 class="section-title">🏠訪問対応エリア</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 15px;">
+                姫路市内・近郊エリアに出張いたします。
+            </p>
+            <p style="font-size: 1rem; color: #666;">
+                遠方の方はご相談ください。（交通費別途）
+            </p>
+            <button class="contact-btn" onclick="alert('お問い合わせありがとうございます！\nこちらは実際のサイトではありませんが、\n素敵なデザインができましたね✨')">
+                お問い合わせ・ご予約
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // ハートのアニメーション
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '💖';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            heart.style.fontSize = (Math.random() * 10 + 15) + 'px';
+            
+            document.getElementById('hearts').appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+
+        // ハートを定期的に生成
+        setInterval(createHeart, 2000);
+
+        // スクロール時のアニメーション
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        });
+
+        document.querySelectorAll('.services-section, .sets-section, .campaign-section, .area-section')
+            .forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
