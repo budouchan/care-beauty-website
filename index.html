@@ -64,6 +64,25 @@
             background: transparent;
         }
 
+        /* モバイル対応 */
+        @media screen and (max-width: 768px) {
+            .hero-video {
+                height: 300px;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .set-card {
+                margin: 10px 0;
+            }
+        }
+
         .hero-content {
             position: relative;
             z-index: 1;
