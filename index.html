@@ -45,16 +45,23 @@
         }
 
         .hero-video {
-            position: absolute;
-            top: 0;
-            left: 0;
+            position: relative;
+            width: 100%;
+            height: 400px;
+            background: rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .hero-video div {
             width: 100%;
             height: 100%;
-            z-index: -1;
-            background: rgba(0,0,0,0.2);
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        }
+
+        .hero-video iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: transparent;
         }
 
         .hero-content {
@@ -399,7 +406,10 @@
     <div class="container">
         <div class="hero">
             <div class="hero-video">
-                <!-- Vimeoプレーヤーがここに埋め込まれます -->
+                <div style="padding:56.25% 0 0 0;position:relative;">
+                    <iframe src="https://player.vimeo.com/video/1094350328?h=14f8f828cd&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="20250618_1546_Gentle Nail Care_simple_compose_01jy0wmjsxe9wswgbs2hcg82rs"></iframe>
+                </div>
+                <script src="https://player.vimeo.com/api/player.js"></script>
             </div>
             <div class="hero-content">
                 <div class="logo">
