@@ -62,6 +62,22 @@
             height: 100%;
             border: none;
             background: transparent;
+            /* テキストとコントロールを非表示にする */
+            filter: brightness(1.1) contrast(1.1);
+        }
+        
+        /* Vimeoのテキストとコントロールを非表示 */
+        .vp-paused .vp-controls,
+        .vp-paused .vp-caption,
+        .vp-paused .vp-title,
+        .vp-paused .vp-description,
+        .vp-paused .vp-branding,
+        .vp-paused .vp-badge,
+        .vp-paused .vp-controls-holder,
+        .vp-paused .vp-bottom {
+            display: none !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
         }
 
         /* モバイル対応 */
